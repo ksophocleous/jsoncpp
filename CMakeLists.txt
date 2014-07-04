@@ -6,6 +6,10 @@ project(${libname} CXX)
 
 set(libtype STATIC)
 
+if(CMAKE_COMPILER_IS_GNUCXX)
+        set(CMAKE_CXX_FLAGS "-std=c++11")
+endif()
+
 if (MSVC)
 	add_definitions("/wd4251")
 	if(${libtype} EQUAL SHARED)
