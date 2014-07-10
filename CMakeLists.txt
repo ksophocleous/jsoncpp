@@ -43,6 +43,7 @@ add_library(${libname} ${libtype} ${src} ${hdr} ${public_hdr})
 set_target_properties(${libname} PROPERTIES
 	PUBLIC_HEADER "${public_hdr}"
 	INCLUDE_DIRECTORIES "${CMAKE_CURRENT_SOURCE_DIR}/include/"
+	INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_SOURCE_DIR}/include/"
 	VERSION "${version}")
 target_link_libraries(${libname} ${platformlibs})
 
