@@ -4,6 +4,8 @@ set(libname "jsoncpp")
 
 project(${libname} CXX)
 
+option(JSONCPP_INSTALL_TARGET "Generate install target commands for jsoncpp" ON)
+
 set(libtype STATIC)
 
 if(CMAKE_COMPILER_IS_GNUCXX)
@@ -47,8 +49,10 @@ set_target_properties(${libname} PROPERTIES
 	VERSION "${version}")
 target_link_libraries(${libname} ${platformlibs})
 
-install(TARGETS ${libname}
-	RUNTIME DESTINATION bin
-	LIBRARY DESTINATION lib
-	ARCHIVE DESTINATION lib
-	PUBLIC_HEADER DESTINATION include/json)
+if(JSONCPP_INSTALL_TARGET)
+	install(TARGETS ${libname}
+		RUNTIME DESTINATION bin
+		LIBRARY DESTINATION lib
+		ARCHIVE DESTINATION lib
+		PUBLIC_HEADER DESTINATION include/json)
+endif()
